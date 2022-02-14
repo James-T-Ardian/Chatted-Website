@@ -11,6 +11,7 @@ const io: socketio.Server<any> = new socketio.Server(server, {
 })
 
 
+
 app.get('/',  (req: Request, res: Response) => {
     res.json({ data: 'hello world' });
 })

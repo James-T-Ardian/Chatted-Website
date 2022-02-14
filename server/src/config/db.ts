@@ -9,5 +9,4 @@ const pool:mysql2.Pool = mysql2.createPool({
     password: process.env.DB_PASSWORD
 })
 
-
 export {pool}
