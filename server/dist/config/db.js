@@ -14,8 +14,3 @@ const pool = mysql2_1.default.createPool({
     password: process.env.DB_PASSWORD
 });
 exports.pool = pool;
-pool.promise().execute('SELECT * FROM users').then((result) => {
-    console.log(result);
-}).catch((err) => {
-    console.log(err);
-});
