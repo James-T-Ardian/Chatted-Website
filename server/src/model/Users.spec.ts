@@ -4,22 +4,22 @@ import {Users} from './Users'
 describe("Users class", ()=>{
     const usersModel:Users = new Users()
 
-    test("createNewUser function", ()=>{
-        return usersModel.createNewUser("test", "pass")
+    test("createNewUser function", async ()=>{
+        usersModel.createNewUser("test", "pass")
         .then((result: MySQLQueryResult)=>{
             expect(result.affectedRows).toBe(1)
         })
     })
 
-    test("getPasswordFromUserId function", ()=>{
-        return usersModel.getPasswordFromUsername("test")
+    test("getPasswordFromUsername function", async ()=>{
+        usersModel.getPasswordFromUsername("test")
         .then((result: MySQLQueryResult)=>{
             expect(result).toEqual([{password: "pass"}])
         })
     })
 
-    test("deleteUser function", ()=>{
-        return usersModel.deleteUserFromUsername("test")
+    test("deleteUserFromUsername function", async ()=>{
+        usersModel.deleteUserFromUsername("test")
         .then((result: MySQLQueryResult)=>{
             expect(result.affectedRows).toBe(1)
         })

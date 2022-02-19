@@ -9,6 +9,9 @@ interface UsersModel{
 }
 
 
+const mysql = pool.promise()
+
+// Class with functions to interact with "user" database table
 class Users implements UsersModel{
 
     // Creates new user in "users" database table
@@ -18,7 +21,7 @@ class Users implements UsersModel{
     //
     // Returns promise of mysql query result
     async createNewUser(username: string, password:string): Promise<MySQLQueryResult>{
-        const mysql = pool.promise()
+        
         const sql: string = "INSERT INTO users(username, password) VALUES (?, ?);"
         const [result, _]: [MySQLQueryResult, FieldPacket[]] = await mysql.execute(sql, [username, password])
         return result
@@ -30,7 +33,6 @@ class Users implements UsersModel{
     //
     // Returns promise of mysql query result
     async getPasswordFromUsername(username: string): Promise<MySQLQueryResult>{
-        const mysql = pool.promise()
         const sql: string = "SELECT password FROM users WHERE username = ?"
         const [result, _]: [MySQLQueryResult, FieldPacket[]] = await mysql.execute(sql, [username])
         return result
@@ -42,7 +44,6 @@ class Users implements UsersModel{
     //
     // Returns promise of mysql query result
     async deleteUserFromUsername(username: string): Promise<MySQLQueryResult>{
-        const mysql = pool.promise()
         const sql: string = "DELETE FROM users WHERE username = ?;"
         const [result, _]: [MySQLQueryResult, FieldPacket[]] = await mysql.execute(sql, [username])
         return result

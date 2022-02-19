@@ -9,23 +9,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Users_1 = require("./Users");
-describe("Users class", () => {
-    const usersModel = new Users_1.Users();
-    test("createNewUser function", () => __awaiter(void 0, void 0, void 0, function* () {
-        usersModel.createNewUser("test", "pass")
+const Rooms_1 = require("./Rooms");
+describe('Creators class', () => {
+    const roomsModel = new Rooms_1.Rooms();
+    let testRoom;
+    test("createNewRoom function", () => __awaiter(void 0, void 0, void 0, function* () {
+        // There is a dedicated user for testing Rooms named "RoomsTest" with user_id 14
+        roomsModel.createNewRoom("14")
             .then((result) => {
+            var _a;
+            testRoom = (_a = result.insertId) === null || _a === void 0 ? void 0 : _a.toString();
             expect(result.affectedRows).toBe(1);
         });
     }));
-    test("getPasswordFromUsername function", () => __awaiter(void 0, void 0, void 0, function* () {
-        usersModel.getPasswordFromUsername("test")
+    test("getCreatorIdFromRoomId", () => __awaiter(void 0, void 0, void 0, function* () {
+        roomsModel.getCreatorIdFromRoomId(testRoom)
             .then((result) => {
-            expect(result).toEqual([{ password: "pass" }]);
+            expect(result).toEqual([{ creator_id: "14" }]);
         });
     }));
-    test("deleteUserFromUsername function", () => __awaiter(void 0, void 0, void 0, function* () {
-        usersModel.deleteUserFromUsername("test")
+    test("deleteRoomFromRoomId", () => __awaiter(void 0, void 0, void 0, function* () {
+        roomsModel.deleteRoomFromRoomId(testRoom)
             .then((result) => {
             expect(result.affectedRows).toBe(1);
         });
