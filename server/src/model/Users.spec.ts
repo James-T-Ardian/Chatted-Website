@@ -19,7 +19,7 @@ describe("Users class", ()=>{
     })
 
     test("deleteUserFromUsername function", async ()=>{
-        usersModel.deleteUserFromUsername("test")
+        usersModel._deleteUserFromUsername("test")
         .then((result: MySQLQueryResult)=>{
             expect(result.affectedRows).toBe(1)
         })

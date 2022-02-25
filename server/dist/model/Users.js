@@ -14,7 +14,7 @@ const db_1 = require("../config/db");
 const mysql = db_1.pool.promise();
 // Class with functions to interact with "user" database table
 class Users {
-    // Creates new user in "users" database table
+    // Creates new entry in "users" database table
     // 
     // Param: username -> username of new user
     // Param: password -> password of new user
@@ -29,7 +29,7 @@ class Users {
     }
     // Gets password of user given their username
     // 
-    // Param: username -> username of user
+    // Param: username -> username from "users" database table of user
     //
     // Returns promise of mysql query result
     getPasswordFromUsername(username) {
@@ -39,12 +39,14 @@ class Users {
             return result;
         });
     }
-    // Deletes user given their username
+    // Deletes entry in "users" databse table given their username. This function is for testing purposes only so that 
+    // users that are created for testing can be deleted. However we do not actually give 
+    // the functionality to delete users in the final product
     // 
-    // Param: username -> username of user
+    // Param: username -> username from "users" database table of user
     //
     // Returns promise of mysql query result
-    deleteUserFromUsername(username) {
+    _deleteUserFromUsername(username) {
         return __awaiter(this, void 0, void 0, function* () {
             const sql = "DELETE FROM users WHERE username = ?;";
             const [result, _] = yield mysql.execute(sql, [username]);

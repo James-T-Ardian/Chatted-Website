@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Rooms_1 = require("./Rooms");
-describe('Creators class', () => {
+describe('Rooms class', () => {
     const roomsModel = new Rooms_1.Rooms();
     let testRoom;
     test("createNewRoom function", () => __awaiter(void 0, void 0, void 0, function* () {

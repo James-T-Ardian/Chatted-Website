@@ -25,7 +25,7 @@ describe("Users class", () => {
         });
     }));
     test("deleteUserFromUsername function", () => __awaiter(void 0, void 0, void 0, function* () {
-        usersModel.deleteUserFromUsername("test")
+        usersModel._deleteUserFromUsername("test")
             .then((result) => {
             expect(result.affectedRows).toBe(1);
         });

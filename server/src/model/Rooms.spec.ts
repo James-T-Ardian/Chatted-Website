@@ -1,7 +1,7 @@
 import { MySQLQueryResult } from '../types/types'
 import {Rooms} from './Rooms'
 
-describe('Creators class', ()=>{
+describe('Rooms class', ()=>{
     const roomsModel = new Rooms()
     let testRoom:string
 
