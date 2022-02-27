@@ -13,19 +13,19 @@ const Users_1 = require("./Users");
 describe("Users class", () => {
     const usersModel = new Users_1.Users();
     test("createNewUser function", () => __awaiter(void 0, void 0, void 0, function* () {
-        usersModel.createNewUser("test", "pass")
+        return usersModel.createNewUser("test", "pass")
             .then((result) => {
             expect(result.affectedRows).toBe(1);
         });
     }));
     test("getPasswordFromUsername function", () => __awaiter(void 0, void 0, void 0, function* () {
-        usersModel.getPasswordFromUsername("test")
+        return usersModel.getPasswordFromUsername("test")
             .then((result) => {
             expect(result).toEqual([{ password: "pass" }]);
         });
     }));
     test("deleteUserFromUsername function", () => __awaiter(void 0, void 0, void 0, function* () {
-        usersModel._deleteUserFromUsername("test")
+        return usersModel._deleteUserFromUsername("test")
             .then((result) => {
             expect(result.affectedRows).toBe(1);
         });

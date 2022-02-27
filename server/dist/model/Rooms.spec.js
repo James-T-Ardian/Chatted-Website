@@ -12,24 +12,42 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Rooms_1 = require("./Rooms");
 describe('Rooms class', () => {
     const roomsModel = new Rooms_1.Rooms();
-    let testRoom;
+    let testRoomId;
     test("createNewRoom function", () => __awaiter(void 0, void 0, void 0, function* () {
         // There is a dedicated user for testing Rooms named "RoomsTest" with user_id 14
-        roomsModel.createNewRoom("14")
+        return roomsModel.createNewRoom("14")
             .then((result) => {
-            var _a;
-            testRoom = (_a = result.insertId) === null || _a === void 0 ? void 0 : _a.toString();
+            let insertId = result.insertId;
+            testRoomId = insertId.toString();
             expect(result.affectedRows).toBe(1);
         });
     }));
     test("getCreatorIdFromRoomId", () => __awaiter(void 0, void 0, void 0, function* () {
-        roomsModel.getCreatorIdFromRoomId(testRoom)
+        return roomsModel.getCreatorIdFromRoomId(testRoomId)
             .then((result) => {
-            expect(result).toEqual([{ creator_id: "14" }]);
+            expect(result).toEqual([{ creator_id: 14 }]);
+        });
+    }));
+    test("addMemberToRoom", () => __awaiter(void 0, void 0, void 0, function* () {
+        return roomsModel.addMemberToRoom("14", testRoomId)
+            .then((result) => {
+            expect(result.affectedRows).toBe(1);
+        });
+    }));
+    test("getAllRoomIdsFromMemberId", () => __awaiter(void 0, void 0, void 0, function* () {
+        return roomsModel.getAllRoomIdsFromMemberId("14")
+            .then((result) => {
+            expect(result).toEqual([{ room_id: Number(testRoomId) }]);
+        });
+    }));
+    test("deleteAllMembersFromRoomId", () => __awaiter(void 0, void 0, void 0, function* () {
+        return roomsModel.deleteAllMembersFromRoomId(testRoomId)
+            .then((result) => {
+            expect(result.affectedRows).toBe(1);
         });
     }));
     test("deleteRoomFromRoomId", () => __awaiter(void 0, void 0, void 0, function* () {
-        roomsModel.deleteRoomFromRoomId(testRoom)
+        return roomsModel.deleteRoomFromRoomId(testRoomId)
             .then((result) => {
             expect(result.affectedRows).toBe(1);
         });
