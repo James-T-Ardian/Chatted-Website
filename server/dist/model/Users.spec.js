@@ -13,21 +13,15 @@ const Users_1 = require("./Users");
 describe("Users class", () => {
     const usersModel = new Users_1.Users();
     test("createNewUser function", () => __awaiter(void 0, void 0, void 0, function* () {
-        return usersModel.createNewUser("test", "pass")
-            .then((result) => {
-            expect(result.affectedRows).toBe(1);
-        });
+        let result = yield usersModel.createNewUser("test", "pass");
+        expect(result.affectedRows).toBe(1);
     }));
     test("getPasswordFromUsername function", () => __awaiter(void 0, void 0, void 0, function* () {
-        return usersModel.getPasswordFromUsername("test")
-            .then((result) => {
-            expect(result).toEqual([{ password: "pass" }]);
-        });
+        let result = yield usersModel.getPasswordFromUsername("test");
+        expect(result).toEqual([{ password: "pass" }]);
     }));
     test("deleteUserFromUsername function", () => __awaiter(void 0, void 0, void 0, function* () {
-        return usersModel._deleteUserFromUsername("test")
-            .then((result) => {
-            expect(result.affectedRows).toBe(1);
-        });
+        let result = yield usersModel._deleteUserFromUsername("test");
+        expect(result.affectedRows).toBe(1);
     }));
 });
