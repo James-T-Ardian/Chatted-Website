@@ -13,15 +13,15 @@ const Users_1 = require("./Users");
 describe("Users class", () => {
     const usersModel = new Users_1.Users();
     test("createNewUser function", () => __awaiter(void 0, void 0, void 0, function* () {
-        let result = yield usersModel.createNewUser("test", "pass");
+        const result = yield usersModel.createNewUser("test", "pass");
         expect(result.affectedRows).toBe(1);
     }));
     test("getPasswordFromUsername function", () => __awaiter(void 0, void 0, void 0, function* () {
-        let result = yield usersModel.getPasswordFromUsername("test");
+        const result = yield usersModel.getPasswordFromUsername("test");
         expect(result).toEqual([{ password: "pass" }]);
     }));
     test("deleteUserFromUsername function", () => __awaiter(void 0, void 0, void 0, function* () {
-        let result = yield usersModel._deleteUserFromUsername("test");
+        const result = yield usersModel._deleteUserFromUsername("test");
         expect(result.affectedRows).toBe(1);
     }));
 });

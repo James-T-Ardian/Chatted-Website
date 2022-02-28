@@ -23,7 +23,7 @@ class Rooms implements RoomsModel{
     //
     // Returns promise of mysql query result
     async createNewRoom(creator_id:string):Promise<MySQLQueryResult>{
-        const sql = 'INSERT INTO room_creators(creator_id) VALUES (?)'
+        const sql: string = 'INSERT INTO room_creators(creator_id) VALUES (?)'
         const [result, _] = await mysql.execute(sql, [creator_id])
         return result
     }
@@ -34,7 +34,7 @@ class Rooms implements RoomsModel{
     //
     // Returns promise of mysql query result
     async getCreatorIdFromRoomId(room_id: string): Promise<MySQLQueryResult>{
-        const sql = 'SELECT creator_id FROM room_creators WHERE room_id = ?'
+        const sql: string = 'SELECT creator_id FROM room_creators WHERE room_id = ?'
         const [result, _] = await mysql.execute(sql, [room_id])
         return result
     }
@@ -47,7 +47,7 @@ class Rooms implements RoomsModel{
     //
     // Returns promise of mysql query result
     async deleteRoomFromRoomId(room_id: string): Promise<MySQLQueryResult>{
-        const sql = 'DELETE FROM room_creators WHERE room_id = ?'
+        const sql: string = 'DELETE FROM room_creators WHERE room_id = ?'
         const [result, _] = await mysql.execute(sql, [room_id])
         return result
     }
@@ -59,7 +59,7 @@ class Rooms implements RoomsModel{
     // 
     // Returns promise of mysql query result
     async addMemberToRoom(member_id: string, room_id: string): Promise<MySQLQueryResult>{
-        const sql = 'INSERT INTO room_members(room_id, member_id) VALUES (?, ?)'
+        const sql: string = 'INSERT INTO room_members(room_id, member_id) VALUES (?, ?)'
         const [result, _] = await mysql.execute(sql, [room_id, member_id])
         return result
     }
@@ -70,7 +70,7 @@ class Rooms implements RoomsModel{
     //
     // Returns promise of mysql query result
     async getAllMemberIdsFromRoomId(room_id: string): Promise<MySQLQueryResult>{
-        const sql = 'SELECT member_id FROM room_members WHERE room_id = ?'
+        const sql: string = 'SELECT member_id FROM room_members WHERE room_id = ?'
         const [result, _] = await mysql.execute(sql, [room_id])
         return result
     }
@@ -81,7 +81,7 @@ class Rooms implements RoomsModel{
     // 
     // Returns promise of mysql query result
     async getAllRoomIdsFromMemberId(member_id: string): Promise<MySQLQueryResult>{
-        const sql = 'SELECT room_id FROM room_members WHERE member_id = ?'
+        const sql: string = 'SELECT room_id FROM room_members WHERE member_id = ?'
         const [result, _] = await mysql.execute(sql, [member_id])
         return result
     }
@@ -92,7 +92,7 @@ class Rooms implements RoomsModel{
     // 
     // Returns promise of mysql query result
     async deleteAllMembersFromRoomId(room_id: string): Promise<MySQLQueryResult>{
-        const sql = 'DELETE FROM room_members WHERE room_id = ?'
+        const sql: string = 'DELETE FROM room_members WHERE room_id = ?'
         const [result, _] = await mysql.execute(sql, [room_id])
         return result
     }
