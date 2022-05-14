@@ -1,17 +1,10 @@
 import { FieldPacket } from 'mysql2';
-import { resourceLimits } from 'worker_threads';
 import {pool} from '../config/db'
 import { MySQLQueryResult } from '../types/types';
 
 const mysql = pool.promise()
 
-interface MessagesModel{
-    createNewMessage(uploader_id: string, room_id: string, message_text: string, upload_time: string): Promise<MySQLQueryResult>,
-    getAllMessagesFromRoomId(room_id: string): Promise<MySQLQueryResult>,
-    deleteAllMessagesFromRoomId(room_id: string): Promise<MySQLQueryResult>
-}
-
-class Messages implements MessagesModel{
+class Messages {
 
     // Create new entry in the "messages" database table
     // 

@@ -4,18 +4,8 @@ import { MySQLQueryResult } from '../types/types';
 
 const mysql = pool.promise()
 
-interface RoomsModel{
-    createNewRoom(creator_id:string):Promise<MySQLQueryResult>,
-    getCreatorIdFromRoomId(room_id: string): Promise<MySQLQueryResult>
-    deleteRoomFromRoomId(room_id: string): Promise<MySQLQueryResult>
-    addMemberToRoom(member_id:string, room_id:string): Promise<MySQLQueryResult>
-    getAllMemberIdsFromRoomId(room_id:string): Promise<MySQLQueryResult>
-    getAllRoomIdsFromMemberId(member_id: string): Promise<MySQLQueryResult>
-    deleteAllMembersFromRoomId(room_id: string): Promise<MySQLQueryResult>
-}
-
 // Class with functions to interact with "room_creators" and "room_members" database table
-class Rooms implements RoomsModel{
+class Rooms{
 
     // Create new entry in the "room_creators" database table
     // 

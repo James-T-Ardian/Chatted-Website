@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const http_1 = require("http");
 const socket_io_1 = __importDefault(require("socket.io"));
+const apiErrorHandler_1 = require("./error/apiErrorHandler");
 const app = (0, express_1.default)();
 const server = (0, http_1.createServer)(app);
 const io = new socket_io_1.default.Server(server, {
@@ -13,9 +14,7 @@ const io = new socket_io_1.default.Server(server, {
         origin: '*'
     }
 });
-app.get('/', (req, res) => {
-    res.json({ data: 'hello world' });
-});
+app.use(apiErrorHandler_1.apiErrorHandler);
 server.listen(3000, () => {
     console.log("Listening on port 3000...");
 });
