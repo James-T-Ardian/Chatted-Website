@@ -1,5 +1,5 @@
 import { FieldPacket } from 'mysql2';
-import {pool} from '../config/db'
+import { pool } from '../config/db'
 import { MySQLQueryResult } from '../types/types';
 
 const mysql = pool.promise()
